@@ -1,4 +1,5 @@
 This repository is based on https://chatengine.io/
+Used: ChatEngine, NodeJs, Vite, ReactJs
 
 ### How to run
 
