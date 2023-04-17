@@ -8,18 +8,15 @@ app.use(cors({ origin: true }));
 
 app.post("/authenticate", async (req, res) => {
   const { username } = req.body;
-
   try {
-    const req = await axios.put("http://api.chatengine.io/users", {
-        username: username, secret: username
-    },
-    {headers: {"private-key": "PRIVAVTE_KEY"}}
-    )
-    return res.status(req.status).json(req.data);
-    }
-   catch (err) {
-    console.error(err);
-    return res.status(err.response.status).json(err.response.data);
+    const r = await axios.put(
+      "https://api.chatengine.io/users/",
+      { username: username, secret: username, first_name: username },
+      { headers: { "Private-Key": "af04ffea-3ef0-422d-af32-ae998deefdcb" } }
+    );
+    return res.status(r.status).json(r.data);
+  } catch (e) {
+    return res.status(e.response.status).json(e.response.data);
   }
 });
 
